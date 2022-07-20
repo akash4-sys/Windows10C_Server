@@ -1,0 +1,33 @@
+{
+  "name": "windows10-server",
+  "version": "1.0.0",
+  "description": "Backend of Windows 10 Chrome",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Codex",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.2",
+    "nodemailer": "^6.7.7",
+    "nodemailer-sendgrid": "^1.0.3",
+    "twilio": "^3.79.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.18",
+    "prettier": "^2.7.1"
+  }
+}

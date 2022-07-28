@@ -2,10 +2,18 @@ const mongoose = require('mongoose');
 
 const userVerificationSchema = mongoose.Schema({
     username:String,
-    email:String,
+    email:{
+        type:String,
+        unique: true, 
+        sparse: true
+    },
     password:String,
     hint:String,
-    phoneNumber:Number,
+    phoneNumber:{
+        type:Number,
+        unique: true, 
+        sparse: true
+    },
     OTP:String,
     permissionToResetPassword:{
         type:Boolean,

@@ -4,13 +4,17 @@ const userSchema = mongoose.Schema({
     username: String,
     email: {
         type: String,
-        default: ""
+        default: "",
+        unique: true, 
+        sparse: true
     },
     password: String,
     hint: String,
     phoneNumber: {
         type:Number,
-        default:""
+        default:"", 
+        unique: true, 
+        sparse: true
     },
     createdAt: {
         type: Date,

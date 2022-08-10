@@ -2,19 +2,21 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     username: String,
-    email: {
-        type: String,
-        default: "",
-        unique: true, 
-        sparse: true
-    },
     password: String,
+    email: {
+        type:String,
+        unique:true,
+        partialFilterExpression: {
+            $exists:true
+        }
+    },
     hint: String,
-    phoneNumber: {
+    phoneNumber:{
         type:Number,
-        default:"", 
-        unique: true, 
-        sparse: true
+        unique: true,
+        partialFilterExpression:{
+            $exists:true
+        }
     },
     createdAt: {
         type: Date,

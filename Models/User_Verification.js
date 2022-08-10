@@ -1,47 +1,51 @@
 const mongoose = require('mongoose');
 
 const userVerificationSchema = mongoose.Schema({
-    username:String,
-    email:{
+    username: String,
+    email: {
         type:String,
-        unique: true, 
-        sparse: true
+        unique:true,
+        partialFilterExpression: {
+            $exists:true
+        }
     },
-    password:String,
-    hint:String,
+    password: String,
+    hint: String,
     phoneNumber:{
         type:Number,
-        unique: true, 
-        sparse: true
+        unique: true,
+        partialFilterExpression:{
+            $exists:true
+        }
     },
-    OTP:String,
-    permissionToResetPassword:{
-        type:Boolean,
-        default:false
+    OTP: String,
+    permissionToResetPassword: {
+        type: Boolean,
+        default: false
     },
-    times_verified:{
-        type:Number,
-        default:0
+    times_verified: {
+        type: Number,
+        default: 0
     },
-    times_resended:{
-        type:Number,
-        default:0
+    times_resended: {
+        type: Number,
+        default: 0
     },
-    times_reseted:{
-        type:Number,
-        default:0
+    times_reseted: {
+        type: Number,
+        default: 0
     },
-    isVerified:{
-        type:Boolean,
-        default:false,
-        index:false
+    isVerified: {
+        type: Boolean,
+        default: false,
+        index: false
     },
-    createdAt:{
-        type:Date,
-        default:Date.now(),
+    createdAt: {
+        type: Date,
+        default: Date.now(),
         index: {
             expires: '570s',
-            partialFilterExpression: {isVerified:false}
+            partialFilterExpression: { isVerified: false }
         }
     }
 });

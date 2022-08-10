@@ -16,22 +16,24 @@ router.get('/session', verifyRefreshToken, async (req, res) => {
 
         const refreshTokenExists = await RefreshToken.findOne({ userID, invalidRefreshTokens: token }).lean();
         if (refreshTokenExists) {
-            RefreshToken.findOneAndDelete({ userID}, (err, done) => {
+            RefreshToken.findOneAndDelete({ userID }, (err, done) => {
                 if (err) return res.status(401).json({ message: "The authentication is invalid", securedConnection: false });
             });
             return res.status(401).json({ message: "Invalid Request", securedConnection: false });
         }
         else RefreshToken.updateOne({ userID }, { $push: { invalidRefreshTokens: [token] } }, (err, done) => {
-            if(err) res.status(401).json({ message: "Invalid Request", securedConnection: false });
+            if (err) res.status(401).json({ message: "Invalid Request", securedConnection: false });
         });
 
         const access_Token = accessToken(userID);
         const refresh_Token = refreshToken(userID);
 
-        res.status(200).json({ message: "Your are authorized to access", 
-            securedConnection: true, access_Token, refresh_Token });
-            
-    }catch(e) {
+        res.status(200).json({
+            message: "Your are authorized to access",
+            securedConnection: true, access_Token, refresh_Token
+        });
+
+    } catch (e) {
         res.status(500).json({ message: "Internal server error, Sorry for inconvenience", created: false });
     }
 });

@@ -34,13 +34,13 @@ app.get('/', (req, res) => {
     res.status(200).send('Congratz your are now connected to windows 10 Chrome server');
 });
 
-app.use('/auth', require('./routes/Authentication/CreateAccount'));
-app.use('/auth', require('./routes/Authentication/Login'));
-app.use('/auth', require('./routes/Authentication/Verify_OTP'));
-app.use('/auth', require('./routes/Authentication/ResendOTP'));
+app.use('/auth', require('./Routes/Authentication/CreateAccount'));
+app.use('/auth', require('./Routes/Authentication/Login'));
+app.use('/auth', require('./Routes/Authentication/Verify_OTP'));
+app.use('/auth', require('./Routes/Authentication/ResendOTP'));
 app.use('/auth', require('./Routes/Authentication/ResetPassword/ResetPassword'));
 app.use('/auth', require('./Routes/Authentication/ResetPassword/UpdatePassword'));
-app.use('/token', require('./routes/Token'));
+app.use('/token', require('./Routes/Token'));
 
 app.get('*', (req, res) => {
     res.status(404).send('Url not found');

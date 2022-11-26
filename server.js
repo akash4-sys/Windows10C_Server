@@ -3,9 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV == "production") 
+    dotenv.config({ path: './config.env' });
+else
     dotenv.config({ path: './Config/config.env' });
-}
 
 require('./Config/Database');
 
